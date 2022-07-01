@@ -7,7 +7,6 @@ const SignupPage = () => {
   const navigation = useNavigation(); 
   const { register, handleSubmit, setValue } = useForm();
   const onSubmit = useCallback(formData => {
-    formData.title = 'B'; 
     console.log(formData);
     
     fetch('http://localhost:5000/register/employee', {

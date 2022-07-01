@@ -85,6 +85,10 @@ const LoginPage = () => {
         <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Reviewer Page')}>
             <Text style = {styles.loginText}> Reviewer Screen </Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Test Reviewer')}>
+            <Text style = {styles.loginText}> Test Reviewer Screen </Text>
+        </TouchableOpacity>
     </View>
   );
 };

@@ -10,6 +10,7 @@ import AdminPage from './screens/AdminPage';
 import AuthorPage from './screens/AuthorPage';
 import ReviewerPage from './screens/ReviewerPage';
 import SignupPage from './screens/SignupPage';
+import TestReviewer from './screens/TestReviewerPage';
 
 
 function HomeScreen({ navigation }) {
@@ -71,6 +72,14 @@ function SupPage() {
   ); 
 }
 
+function TestReview() {
+  return (
+    <View style = {styles.container}>
+      <TestReviewer />
+    </View>
+  );
+}
+
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -83,6 +92,7 @@ function App() {
         <Stack.Screen name="Author Page" component={AuthPage} />
         <Stack.Screen name="Reviewer Page" component={RevPage} />
         <Stack.Screen name="Sign Up Page" component={SupPage} />
+        <Stack.Screen name="Test Reviewer" component={TestReview} />
       </Stack.Navigator>
     </NavigationContainer>
   );

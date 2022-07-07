@@ -1,129 +1,249 @@
-import React, { useEffect, useCallback, Fragment } from 'react';
-import { View, TextInput, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import { useForm } from 'react-hook-form';
-import { useNavigation } from "@react-navigation/native"; 
+import * as React from 'react';
+import { Button, StyleSheet, View, Image, TextInput } from 'react-native';
+import { RadioButton, Text } from 'react-native-paper';
 
-const ReviewerPage = () => {
-  const navigation = useNavigation(); 
-  const { register, handleSubmit, setValue } = useForm();
-  const onSubmit = useCallback(formData => {
-    console.log(formData);
-    
-    fetch('http://localhost:5000/register/employee', {
-      method: 'POST', 
-      headers: {
-        Accept: 'application/json', 
-        'Content-Type': 'application/json'
-      }, 
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      console.log("response: " + response);
-      if (response.status === 200) {
-        console.log("Response is 200")
-        navigation.navigate('Bartender Screen');
-        return response.json(); 
-      }
-    })
-    
-  }, []);
-  const onChangeField = useCallback(
-    name => text => {
-      setValue(name, text);
-    },
-    []
-  );
-
-  useEffect(() => {
-    register('fname'); 
-    register('lname'); 
-    register('password');
-    register('title');
-  }, [register]);
+const TestReviewer = () => {
+  const [value, setValue] = React.useState('');
+  const [tempvalue, settempValue] = React.useState(''); 
+  const [supvalue, setsupValue] = React.useState(''); 
+  const [techvalue, settechValue] = React.useState(''); 
+  const [scopevalue, setscopeValue] = React.useState(''); 
 
   return (
-    <View style = { styles.container }>
-        <View style = {styles.inputView}>
-          <TextInput 
-              style = {styles.inputText}
-              placeholder = "First Name"
-              placeholderTextColor = "#003f5c"
-              onChangeText = {onChangeField('fname')}
-          />
+    <View style = {styles.container}>
+      <Text style = {{ color: '#CFC493', fontSize: 32,  fontFamily: 'Garamond'}}>
+        Please complete scoring for the following paper below
+      </Text>
+      <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 200, marginBottom: 10, fontFamily: 'Garamond'}}>
+        Appropriateness of Topic 
+      </Text> 
+      <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
+        <View style={{ flexDirection: 'row', alignContent: 'center' }}>
+          <View>
+            <Text>1</Text>
+            <RadioButton
+            value="first"
+            status={ value === 'first' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>2</Text>
+            <RadioButton
+            value="second"
+            status={ value === 'second' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>3</Text>
+            <RadioButton
+            value="third"
+            status={ value === 'third' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>4</Text>
+            <RadioButton
+            value="fourth"
+            status={ value === 'fourth' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>5</Text>
+            <RadioButton
+            value="fifth"
+            status={ value === 'fifth' ? 'checked' : 'unchecked' }
+            />
+          </View>
         </View>
+      </RadioButton.Group>
 
-        <View style = {styles.inputView}>
-          <TextInput 
-              style = {styles.inputText}
-              placeholder = "Last Name"
-              placeholderTextColor = "#003f5c"
-              onChangeText = {onChangeField('lname')}
-          />
+      <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 20, marginBottom: 10, fontFamily: 'Garamond'}}>
+        Timelieness of Topic
+      </Text> 
+      <RadioButton.Group onValueChange={newValue => settempValue(newValue)} tempvalue={value}>
+        <View style={{ flexDirection: 'row', alignContent: 'center' }}>
+          <View>
+            <Text>1</Text>
+            <RadioButton
+            value="first"
+            status={ tempvalue === 'first' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>2</Text>
+            <RadioButton
+            value="second"
+            status={ tempvalue === 'second' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>3</Text>
+            <RadioButton
+            value="third"
+            status={ tempvalue === 'third' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>4</Text>
+            <RadioButton
+            value="fourth"
+            status={ tempvalue === 'fourth' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>5</Text>
+            <RadioButton
+            value="fifth"
+            status={ tempvalue === 'fifth' ? 'checked' : 'unchecked' }
+            />
+          </View>
         </View>
+      </RadioButton.Group>
 
-        <View style = {styles.inputView}>
-          <TextInput 
-              style = {styles.inputText}
-              placeholder = "Password"
-              placeholderTextColor = "#003f5c"
-              secureTextEntry = {true}
-              onChangeText = {onChangeField('password')}
-          />
+      <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 20, marginBottom: 10, fontFamily: 'Garamond'}}>
+        Supportive Evidence
+      </Text> 
+      <RadioButton.Group onValueChange={newValue => setsupValue(newValue)} supvalue={value}>
+        <View style={{ flexDirection: 'row', alignContent: 'center' }}>
+          <View>
+            <Text>1</Text>
+            <RadioButton
+            value="first"
+            status={ supvalue === 'first' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>2</Text>
+            <RadioButton
+            value="second"
+            status={ supvalue === 'second' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>3</Text>
+            <RadioButton
+            value="third"
+            status={ supvalue === 'third' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>4</Text>
+            <RadioButton
+            value="fourth"
+            status={ supvalue === 'fourth' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>5</Text>
+            <RadioButton
+            value="fifth"
+            status={ supvalue === 'fifth' ? 'checked' : 'unchecked' }
+            />
+          </View>
         </View>
-        <TouchableOpacity style = {styles.loginBtn} onPress = {handleSubmit(onSubmit)}>
-            <Text style = {styles.loginText}> Sign Up </Text>
-        </TouchableOpacity>
+      </RadioButton.Group>
+
+      <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 20, marginBottom: 10, fontFamily: 'Garamond'}}>
+        Technical Quality
+      </Text> 
+      <RadioButton.Group onValueChange={newValue => settechValue(newValue)} techvalue={value}>
+        <View style={{ flexDirection: 'row', alignContent: 'center' }}>
+          <View>
+            <Text>1</Text>
+            <RadioButton
+            value="first"
+            status={ techvalue === 'first' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>2</Text>
+            <RadioButton
+            value="second"
+            status={ techvalue === 'second' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>3</Text>
+            <RadioButton
+            value="third"
+            status={ techvalue === 'third' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>4</Text>
+            <RadioButton
+            value="fourth"
+            status={ techvalue === 'fourth' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>5</Text>
+            <RadioButton
+            value="fifth"
+            status={ techvalue === 'fifth' ? 'checked' : 'unchecked' }
+            />
+          </View>
+        </View>
+      </RadioButton.Group>
+
+      <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 20, marginBottom: 10, fontFamily: 'Garamond'}}>
+        Scope of Coverage
+      </Text> 
+      <RadioButton.Group onValueChange={newValue => setscopeValue(newValue)} scopevalue={value}>
+        <View style={{ flexDirection: 'row', alignContent: 'center' }}>
+          <View>
+            <Text>1</Text>
+            <RadioButton
+            value="first"
+            status={ scopevalue === 'first' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>2</Text>
+            <RadioButton
+            value="second"
+            status={ scopevalue === 'second' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>3</Text>
+            <RadioButton
+            value="third"
+            status={ scopevalue === 'third' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>4</Text>
+            <RadioButton
+            value="fourth"
+            status={ scopevalue === 'fourth' ? 'checked' : 'unchecked' }
+            />
+          </View>
+          <View>
+            <Text>5</Text>
+            <RadioButton
+            value="fifth"
+            status={ scopevalue === 'fifth' ? 'checked' : 'unchecked' }
+            />
+          </View>
+        </View>
+      </RadioButton.Group>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#006747",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-   
-    image: {
-      marginBottom: 40,
-    },
-   
-    inputView: {
-      backgroundColor: "#3EB489",
-      borderRadius: 30,
-      width: "80%",
-      height: 45,
-      marginBottom: 20,
-      alignItems: "center",
-    },
-   
-    inputText: {
-      height: 50,
-      flex: 1,
-      padding: 10,
-      marginLeft: 25,
-    },
-   
-    forgot_button: {
-      height: 30,
-      marginBottom: 30,
-    },
-   
-    loginBtn: {
-      width: "80%",
-      borderRadius: 25,
-      height: 50,
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 40,
-      backgroundColor: "#CFC493",
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#006747',
+    alignItems: 'center',
+    alignContent: 'center'
+  },
 
-    loginText: {
-        color: "white", 
-        fontSize: 16
-    }
-  });
-
-export default ReviewerPage;
+  button: {
+    flexDirection: "row", 
+    justifyContent: "space-around", 
+    backgroundColor: 'green', 
+  }, 
+});
+export default TestReviewer;

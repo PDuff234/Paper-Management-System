@@ -22,7 +22,7 @@ function HomeScreen({ navigation }) {
         Conference Paper Management System
       </Text>
       <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 6, marginBottom: 40, fontFamily: 'Garamond'}}>
-        Patrick Duffany, Jeremy Rutter, Dawson 
+        Patrick Duffany, Jeremy Rutter, Dawson Murphy
       </Text>     
         <Button
           title="Login Page"
@@ -72,14 +72,6 @@ function SupPage() {
   ); 
 }
 
-function TestReview() {
-  return (
-    <View style = {styles.container}>
-      <TestReviewer />
-    </View>
-  );
-}
-
 const Stack = createNativeStackNavigator();
 
 function App() {
@@ -92,7 +84,6 @@ function App() {
         <Stack.Screen name="Author Page" component={AuthPage} />
         <Stack.Screen name="Reviewer Page" component={RevPage} />
         <Stack.Screen name="Sign Up Page" component={SupPage} />
-        <Stack.Screen name="Test Reviewer" component={TestReview} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -108,7 +99,7 @@ const styles = StyleSheet.create({
 
   button: {
     flexDirection: "row", 
-    justifyContent: "space-around", 
+    justifyContent: "space-evenly", 
     backgroundColor: 'green', 
   }, 
 });

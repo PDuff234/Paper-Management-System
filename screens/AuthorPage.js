@@ -1,79 +1,32 @@
 import React, { useEffect, useCallback, Fragment } from 'react';
-import { View, TextInput, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Button, TextInput, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { useNavigation } from "@react-navigation/native"; 
 
 const AuthorPage = () => {
   const navigation = useNavigation(); 
-  const { register, handleSubmit, setValue } = useForm();
-  const onSubmit = useCallback(formData => {
-    formData.title = 'B'; 
-    console.log(formData);
-    
-    fetch('http://localhost:5000/register/employee', {
-      method: 'POST', 
-      headers: {
-        Accept: 'application/json', 
-        'Content-Type': 'application/json'
-      }, 
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      console.log("response: " + response);
-      if (response.status === 200) {
-        console.log("Response is 200")
-        navigation.navigate('Bartender Screen');
-        return response.json(); 
-      }
-    })
-    
-  }, []);
-  const onChangeField = useCallback(
-    name => text => {
-      setValue(name, text);
-    },
-    []
-  );
-
-  useEffect(() => {
-    register('fname'); 
-    register('lname'); 
-    register('password');
-    register('title');
-  }, [register]);
 
   return (
     <View style = { styles.container }>
-        <View style = {styles.inputView}>
-          <TextInput 
-              style = {styles.inputText}
-              placeholder = "First Name"
-              placeholderTextColor = "#003f5c"
-              onChangeText = {onChangeField('fname')}
-          />
-        </View>
+      <Text style = {{ color: '#CFC493', fontSize: 32, marginTop: 20, fontFamily: 'Garamond'}}>
+        Author Page
+      </Text>
 
-        <View style = {styles.inputView}>
-          <TextInput 
-              style = {styles.inputText}
-              placeholder = "Last Name"
-              placeholderTextColor = "#003f5c"
-              onChangeText = {onChangeField('lname')}
-          />
-        </View>
-
-        <View style = {styles.inputView}>
-          <TextInput 
-              style = {styles.inputText}
-              placeholder = "Password"
-              placeholderTextColor = "#003f5c"
-              secureTextEntry = {true}
-              onChangeText = {onChangeField('password')}
-          />
-        </View>
-        <TouchableOpacity style = {styles.loginBtn} onPress = {handleSubmit(onSubmit)}>
-            <Text style = {styles.loginText}> Sign Up </Text>
-        </TouchableOpacity>
+      <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 100, marginBottom: 80, fontFamily: 'Garamond'}}>
+        Please choose the paper you would like to submit to The Consortium for Computing Sciences in Colleges Midwest Region (CCSCMW) using one of the options below
+      </Text>
+      <View style = {styles.fixToText}>
+        <Button
+          title = "Add Paper"
+        />
+        <Button 
+          title = "Modify Paper"
+        />
+        <Button
+          title = "Delete Paper"
+        />
+      </View>
+      
     </View>
   );
 };
@@ -82,49 +35,16 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: "#006747",
+      textAlign: 'center', 
       alignItems: "center",
-      justifyContent: "center",
+      alignContent: "center",
     },
    
-    image: {
-      marginBottom: 40,
-    },
-   
-    inputView: {
-      backgroundColor: "#3EB489",
-      borderRadius: 30,
-      width: "80%",
-      height: 45,
-      marginBottom: 20,
-      alignItems: "center",
-    },
-   
-    inputText: {
-      height: 50,
-      flex: 1,
-      padding: 10,
-      marginLeft: 25,
-    },
-   
-    forgot_button: {
-      height: 30,
-      marginBottom: 30,
-    },
-   
-    loginBtn: {
-      width: "80%",
-      borderRadius: 25,
-      height: 50,
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 40,
-      backgroundColor: "#CFC493",
-    },
+    fixToText: {
+      flexDirection: 'row', 
+      justifyContent: 'space-between', 
+    }, 
 
-    loginText: {
-        color: "white", 
-        fontSize: 16
-    }
   });
 
 export default AuthorPage;

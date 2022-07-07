@@ -1,130 +1,78 @@
-import React, { useEffect, useCallback, Fragment } from 'react';
-import { View, TextInput, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useEffect, useCallback, Component } from 'react';
+import { View, TextInput, Text, StyleSheet, Image, TouchableOpacity, Touchable } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { useNavigation } from "@react-navigation/native"; 
 
 const AdminPage = () => {
   const navigation = useNavigation(); 
-  const { register, handleSubmit, setValue } = useForm();
-  const onSubmit = useCallback(formData => {
-    formData.title = 'B'; 
-    console.log(formData);
-    
-    fetch('http://localhost:5000/register/employee', {
-      method: 'POST', 
-      headers: {
-        Accept: 'application/json', 
-        'Content-Type': 'application/json'
-      }, 
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      console.log("response: " + response);
-      if (response.status === 200) {
-        console.log("Response is 200")
-        navigation.navigate('Bartender Screen');
-        return response.json(); 
-      }
-    })
-    
-  }, []);
-  const onChangeField = useCallback(
-    name => text => {
-      setValue(name, text);
-    },
-    []
-  );
-
-  useEffect(() => {
-    register('fname'); 
-    register('lname'); 
-    register('password');
-    register('title');
-  }, [register]);
 
   return (
     <View style = { styles.container }>
-        <View style = {styles.inputView}>
-          <TextInput 
-              style = {styles.inputText}
-              placeholder = "First Name"
-              placeholderTextColor = "#003f5c"
-              onChangeText = {onChangeField('fname')}
-          />
-        </View>
+      <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 100, marginBottom: 80, fontFamily: 'Garamond'}}>
+        Choose what table you would like to go into
+      </Text>
 
-        <View style = {styles.inputView}>
-          <TextInput 
-              style = {styles.inputText}
-              placeholder = "Last Name"
-              placeholderTextColor = "#003f5c"
-              onChangeText = {onChangeField('lname')}
-          />
-        </View>
-
-        <View style = {styles.inputView}>
-          <TextInput 
-              style = {styles.inputText}
-              placeholder = "Password"
-              placeholderTextColor = "#003f5c"
-              secureTextEntry = {true}
-              onChangeText = {onChangeField('password')}
-          />
-        </View>
-        <TouchableOpacity style = {styles.loginBtn} onPress = {handleSubmit(onSubmit)}>
-            <Text style = {styles.loginText}> Sign Up </Text>
+      <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
+        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Author Page')}>
+            <Text style = {styles.loginText}> Author Table </Text>
         </TouchableOpacity>
+
+        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Reviewer Page')}>
+            <Text style = {styles.loginText}> Reviewer Table </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "#006747",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-   
-    image: {
-      marginBottom: 40,
-    },
-   
-    inputView: {
-      backgroundColor: "#3EB489",
-      borderRadius: 30,
-      width: "80%",
-      height: 45,
-      marginBottom: 20,
-      alignItems: "center",
-    },
-   
-    inputText: {
-      height: 50,
-      flex: 1,
-      padding: 10,
-      marginLeft: 25,
-    },
-   
-    forgot_button: {
-      height: 30,
-      marginBottom: 30,
-    },
-   
-    loginBtn: {
-      width: "80%",
-      borderRadius: 25,
-      height: 50,
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 40,
-      backgroundColor: "#CFC493",
-    },
+  container: {
+    flex: 1,
+    backgroundColor: "#006747",
+    justifyContent: "center",
+    //alignContent: 'center', 
+  },
+ 
+  image: {
+    marginBottom: 40,
+  },
+ 
+  inputView: {
+    backgroundColor: "#3EB489",
+    borderRadius: 30,
+    width: "80%",
+    height: 45,
+    marginBottom: 20,
+    alignItems: "center",
+  },
+ 
+  inputText: {
+    height: 50,
+    flex: 1,
+    padding: 10,
+    marginLeft: 25,
+  },
+ 
+  forgot_button: {
+    height: 30,
+    marginBottom: 30,
+    color: 'white', 
+  },
+ 
+  loginBtn: {
+    width: "80%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#CFC493",
+  },
 
-    loginText: {
-        color: "white", 
-        fontSize: 16
-    }
-  });
+  loginText: {
+      color: "white", 
+      fontSize: 16
+  }
+});
 
 export default AdminPage;

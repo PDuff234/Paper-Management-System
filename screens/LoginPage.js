@@ -28,7 +28,7 @@ const LoginPage = () => {
     })
     .then(data=>{
       sessionStorage.setItem("user", data);
-      navigation.navigate('Bartender Screen');
+      navigation.navigate('Author Page');
     })
   });
 
@@ -73,7 +73,7 @@ const LoginPage = () => {
         <TouchableOpacity style = {styles.loginBtn} onPress = {handleSubmit(onSubmit)}>
             <Text style = {styles.loginText}> Login </Text>
         </TouchableOpacity>
-  { /*
+  
         <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Admin Page')}>
             <Text style = {styles.loginText}> Admin Screen </Text>
         </TouchableOpacity>
@@ -85,7 +85,7 @@ const LoginPage = () => {
         <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Reviewer Page')}>
             <Text style = {styles.loginText}> Reviewer Screen </Text>
         </TouchableOpacity>
-  */}
+  
     </View>
   );
 };

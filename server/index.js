@@ -164,11 +164,11 @@ app.post("/register/employee", async(req, res) => {
 });
 
 //register user
-app.post("/register/customer", async(req, res) => {
+app.post("/register/author", async(req, res) => {
     try {
         const { fname, lname, username, password } = req.body;
         const newUser = await pool.query(
-            "INSERT INTO Customers (Fname, Lname, Username, Password) VALUES ($1, $2, $3, $4)",
+            "INSERT INTO Author (Fname, Lname, Username, Password) VALUES ($1, $2, $3, $4)",
             [fname, lname, username, password]
         );
         

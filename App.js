@@ -5,12 +5,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
 import { Button, StyleSheet, Text, View, Image, TextInput } from 'react-native';
 
-import LoginPage from './screens/LoginPage';
+import LoginPage from './screens/LoginPage_Admin';
 import AdminPage from './screens/AdminPage';
 import AuthorPage from './screens/AuthorPage';
 import ReviewerPage from './screens/ReviewerPage';
-import SignupPage from './screens/SignupPage';
-import TestReviewer from './screens/TestReviewerPage';
+import SignupPage from './screens/SignupPage_Admin';
+import LoginPageAdmin from './screens/LoginPage_Admin';
 
 
 function HomeScreen({ navigation }) {
@@ -32,10 +32,10 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function LogPage() {
+function LogPage_Adm() {
   return (
     <View style = {styles.container}>
-      <LoginPage />
+      <LoginPageAdmin />
     </View>
   ); 
 }
@@ -79,7 +79,7 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Login Page" component={LogPage} />
+        <Stack.Screen name="Login Page" component={LogPage_Adm} />
         <Stack.Screen name="Admin Page" component={AdmPage} />
         <Stack.Screen name="Author Page" component={AuthPage} />
         <Stack.Screen name="Reviewer Page" component={RevPage} />

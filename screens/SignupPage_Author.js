@@ -1,15 +1,15 @@
 import React, { useEffect, useCallback, Fragment } from 'react';
-import { View, TextInput, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, TextInput, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { useNavigation } from "@react-navigation/native"; 
 
-const SignupPage = () => {
+const SignupPageAuthor = () => {
   const navigation = useNavigation(); 
   const { register, handleSubmit, setValue } = useForm();
   const onSubmit = useCallback(formData => {
     console.log(formData);
     
-    fetch('http://localhost:5000/register/employee', {
+    fetch('http://localhost:5000/register/authors', {
       method: 'POST', 
       headers: {
         Accept: 'application/json', 
@@ -21,7 +21,7 @@ const SignupPage = () => {
       console.log("response: " + response);
       if (response.status === 200) {
         console.log("Response is 200")
-        navigation.navigate('Bartender Screen');
+        navigation.navigate('Author Login');
         return response.json(); 
       }
     })
@@ -36,19 +36,34 @@ const SignupPage = () => {
 
   useEffect(() => {
     register('fname'); 
+    register('midinit'); 
     register('lname'); 
+    register('affiliation'); 
+    register('department'); 
+    register('phonenumber'); 
+    register('email'); 
+    register('username'); 
     register('password');
-    register('title');
   }, [register]);
 
   return (
     <View style = { styles.container }>
+      <ScrollView contentContainerStyle = {{ flexGrow: 1, justifyContent: 'center', alignContent: 'center', alignItems: 'center', marginHorizontal: 40 }}>
         <View style = {styles.inputView}>
           <TextInput 
               style = {styles.inputText}
               placeholder = "First Name"
               placeholderTextColor = "#003f5c"
               onChangeText = {onChangeField('fname')}
+          />
+        </View>
+
+        <View style = {styles.inputView}>
+          <TextInput 
+              style = {styles.inputText}
+              placeholder = "Middle Initial"
+              placeholderTextColor = "#003f5c"
+              onChangeText = {onChangeField('midinit')}
           />
         </View>
 
@@ -64,15 +79,63 @@ const SignupPage = () => {
         <View style = {styles.inputView}>
           <TextInput 
               style = {styles.inputText}
+              placeholder = "Affiliation"
+              placeholderTextColor = "#003f5c"
+              onChangeText = {onChangeField('affiliation')}
+          />
+        </View>
+
+        <View style = {styles.inputView}>
+          <TextInput 
+              style = {styles.inputText}
+              placeholder = "Department"
+              placeholderTextColor = "#003f5c"
+              onChangeText = {onChangeField('department')}
+          />
+        </View>
+
+        <View style = {styles.inputView}>
+          <TextInput 
+              style = {styles.inputText}
+              placeholder = "Phone Number"
+              placeholderTextColor = "#003f5c"
+              onChangeText = {onChangeField('phonenumber')}
+          />
+        </View>
+
+        <View style = {styles.inputView}>
+          <TextInput 
+              style = {styles.inputText}
+              placeholder = "Email"
+              placeholderTextColor = "#003f5c"
+              onChangeText = {onChangeField('email')}
+          />
+        </View>
+
+        <View style = {styles.inputView}>
+          <TextInput 
+              style = {styles.inputText}
+              placeholder = "Username"
+              placeholderTextColor = "#003f5c"
+              onChangeText = {onChangeField('username')}
+          />
+        </View>
+
+        <View style = {styles.inputView}>
+          <TextInput 
+              style = {styles.inputText}
               placeholder = "Password"
               placeholderTextColor = "#003f5c"
               secureTextEntry = {true}
               onChangeText = {onChangeField('password')}
           />
         </View>
+
         <TouchableOpacity style = {styles.loginBtn} onPress = {handleSubmit(onSubmit)}>
             <Text style = {styles.loginText}> Sign Up </Text>
         </TouchableOpacity>
+
+      </ScrollView>
     </View>
   );
 };
@@ -126,4 +189,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default SignupPage;
+export default SignupPageAuthor;

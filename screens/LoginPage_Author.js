@@ -3,7 +3,7 @@ import { View, TextInput, Text, StyleSheet, Image, TouchableOpacity, Touchable }
 import { useForm } from 'react-hook-form';
 import { useNavigation } from "@react-navigation/native"; 
 
-const LoginPage = () => {
+const LoginPageAuthor = () => {
   const navigation = useNavigation(); 
   const { register, handleSubmit, setValue } = useForm();
 
@@ -11,7 +11,7 @@ const LoginPage = () => {
   const onSubmit = useCallback(formData => {
     console.log("Data sent: " + formData);
     
-    fetch('http://localhost:5000/login/bartender', {
+    fetch('http://localhost:5000/login/authors', {
       method: 'POST', 
       headers: {
         Accept: 'application/json', 
@@ -67,23 +67,11 @@ const LoginPage = () => {
         </View>
 
         <TouchableOpacity>
-          <Text style = {styles.forgot_button} onPress = {() => navigation.navigate('Sign Up Page')}> Not a user? Register Here! </Text>
+          <Text style = {styles.forgot_button} onPress = {() => navigation.navigate('Author Sign Up')}> Not a user? Register Here! </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style = {styles.loginBtn} onPress = {handleSubmit(onSubmit)}>
             <Text style = {styles.loginText}> Login </Text>
-        </TouchableOpacity>
-  
-        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Admin Page')}>
-            <Text style = {styles.loginText}> Admin Screen </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Author Page')}>
-            <Text style = {styles.loginText}> Author Screen </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Reviewer Page')}>
-            <Text style = {styles.loginText}> Reviewer Screen </Text>
         </TouchableOpacity>
   
     </View>
@@ -140,4 +128,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default LoginPage;
+export default LoginPageAuthor;

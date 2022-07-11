@@ -19,9 +19,11 @@ const AuthorPage = () => {
         <Button
           title = "Add Paper"
         />
+        <View style = {styles.space} />
         <Button 
           title = "Modify Paper"
         />
+        <View style = {styles.space} />
         <Button
           title = "Delete Paper"
         />
@@ -43,6 +45,10 @@ const styles = StyleSheet.create({
     fixToText: {
       flexDirection: 'row', 
       justifyContent: 'space-between', 
+    }, 
+
+    space: {
+      width: 20, 
     }, 
 
   });

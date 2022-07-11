@@ -11,7 +11,7 @@ const LoginPageAdmin = () => {
   const onSubmit = useCallback(formData => {
     console.log("Data sent: " + formData);
     
-    fetch('http://localhost:5000/login/bartender', {
+    fetch('http://localhost:5000/login/admin', {
       method: 'POST', 
       headers: {
         Accept: 'application/json', 
@@ -66,14 +66,15 @@ const LoginPageAdmin = () => {
           />
         </View>
 
+
         <TouchableOpacity>
-          <Text style = {styles.forgot_button} onPress = {() => navigation.navigate('Sign Up Page')}> Not a user? Register Here! </Text>
+          <Text style = {styles.forgot_button} onPress = {() => navigation.navigate('Admin Sign Up')}> Not a user? Register Here! </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style = {styles.loginBtn} onPress = {handleSubmit(onSubmit)}>
             <Text style = {styles.loginText}> Login </Text>
         </TouchableOpacity>
-  
+{/* 
         <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Admin Page')}>
             <Text style = {styles.loginText}> Admin Screen </Text>
         </TouchableOpacity>
@@ -85,7 +86,7 @@ const LoginPageAdmin = () => {
         <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Reviewer Page')}>
             <Text style = {styles.loginText}> Reviewer Screen </Text>
         </TouchableOpacity>
-  
+  */}
     </View>
   );
 };

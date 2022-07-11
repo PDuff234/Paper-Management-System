@@ -1,6 +1,9 @@
 --Create Address Table
 --CREATE TABLE Addresses(AddressID SERIAL PRIMARY KEY, HouseNumber INTEGER, StreetName VARCHAR(50), City VARCHAR(15), State VARCHAR(10), Zip INTEGER); 
 
+--Create Admin Table
+CREATE TABLE Admin(AdminID SERIAL PRIMARY KEY, Fname VARCHAR(30) NOT NULL, Lname VARCHAR(30) NOT NULL, Username VARCHAR(20) NOT NULL, Password VARCHAR(20) NOT NULL); 
+
 --Create Author Table
 CREATE TABLE Authors(AuthorID SERIAL PRIMARY KEY, Fname VARCHAR(30) NOT NULL, MidInit CHAR NOT NULL, Lname VARCHAR(30) NOT NULL, Affiliation VARCHAR(20) NOT NULL, Department VARCHAR(30) NOT NULL, 
 PhoneNumber VARCHAR(10) NOT NULL, Email VARCHAR(50) NOT NULL, Username VARCHAR(20) NOT NULL, Password VARCHAR(20) NOT NULL); 
@@ -25,36 +28,36 @@ Sustainability INTEGER NOT NULL CHECK(Sustainability BETWEEN 1 AND 5), Potential
 OverallRating INTEGER NOT NULL CHECK(OverallRating BETWEEN 1 AND 5), OverallComments VARCHAR(400), WeightedScore INTEGER); 
 
 --Insert Values into Genre Table
-INSERT INTO Genres(GenreDescription) VALUES ("Analysis of Algorithms"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Applications"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Architecture"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Artificial Intelligence"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Computer Engineering"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Curriculum"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Data Structures"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Distance Learning"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Distributed Systems"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Ethical Societal Issues"); 
-INSERT INTO Genres(GenreDescription) VALUES ("First Year Computing"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Gender Issues"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Grant Writing"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Graphics Image Processing"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Human Computer Interaction"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Laboratory Environments"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Literacy"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Mathematics in Computing"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Multimedia"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Networking/Data Communication"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Non-Major Courses"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Object Oriented Issues"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Operating Systems"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Parallel Processing"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Pedagogy"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Programming Languages"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Research"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Security"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Software Engineering"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Systems Analysis and Design"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Using Technology in the Classroom"); 
-INSERT INTO Genres(GenreDescription) VALUES ("Web and Internet Programming"); 
+INSERT INTO Genres(GenreDescription) VALUES ('Analysis of Algorithms'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Applications'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Architecture'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Artificial Intelligence'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Computer Engineering'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Curriculum'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Data Structures'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Distance Learning'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Distributed Systems'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Ethical Societal Issues'); 
+INSERT INTO Genres(GenreDescription) VALUES ('First Year Computing'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Gender Issues'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Grant Writing'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Graphics Image Processing'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Human Computer Interaction'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Laboratory Environments'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Literacy'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Mathematics in Computing'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Multimedia'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Networking/Data Communication'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Non-Major Courses'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Object Oriented Issues'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Operating Systems'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Parallel Processing'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Pedagogy'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Programming Languages'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Research'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Security'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Software Engineering'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Systems Analysis and Design'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Using Technology in the Classroom'); 
+INSERT INTO Genres(GenreDescription) VALUES ('Web and Internet Programming'); 
 

@@ -1,15 +1,30 @@
-import React, { useEffect, useCallback, Fragment } from 'react';
-import { View, TextInput, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useEffect, useCallback, Fragment, useState } from 'react';
+import { View, TextInput, Text, StyleSheet, Image, TouchableOpacity, Alert } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { useNavigation } from "@react-navigation/native"; 
 
-const SignupPage = () => {
+const SignupPageAdmin = () => {
   const navigation = useNavigation(); 
+
+  const createAlert = () => 
+    Alert.alert(
+      "Notice",
+      "Admin User has been Successfully registered",
+      [
+        {
+          text: "Sweet!",
+          onPress: () => navigation.navigate('Admin Login'),
+          style: "default"
+        },
+      ],
+      { cancelable: false }
+    );  
+
   const { register, handleSubmit, setValue } = useForm();
   const onSubmit = useCallback(formData => {
     console.log(formData);
     
-    fetch('http://localhost:5000/register/employee', {
+    fetch('http://localhost:5000/register/admin', {
       method: 'POST', 
       headers: {
         Accept: 'application/json', 
@@ -21,7 +36,7 @@ const SignupPage = () => {
       console.log("response: " + response);
       if (response.status === 200) {
         console.log("Response is 200")
-        navigation.navigate('Bartender Screen');
+        navigation.navigate('Admin Login');
         return response.json(); 
       }
     })
@@ -37,8 +52,8 @@ const SignupPage = () => {
   useEffect(() => {
     register('fname'); 
     register('lname'); 
+    register('username'); 
     register('password');
-    register('title');
   }, [register]);
 
   return (
@@ -58,6 +73,15 @@ const SignupPage = () => {
               placeholder = "Last Name"
               placeholderTextColor = "#003f5c"
               onChangeText = {onChangeField('lname')}
+          />
+        </View>
+
+        <View style = {styles.inputView}>
+          <TextInput 
+              style = {styles.inputText}
+              placeholder = "Username"
+              placeholderTextColor = "#003f5c"
+              onChangeText = {onChangeField('username')}
           />
         </View>
 
@@ -126,4 +150,4 @@ const styles = StyleSheet.create({
     }
   });
 
-export default SignupPage;
+export default SignupPageAdmin;

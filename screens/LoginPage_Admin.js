@@ -22,8 +22,12 @@ const LoginPageAdmin = () => {
     .then(response => {
       console.log("Response: " + response);
       if (response.status === 200) {
-        console.log("Response is 200")
+        console.log("Response is 200"); 
+        alert("User has successfully logged in"); 
         return response.json(); 
+      }
+      if (response.status !== 200) {
+        alert("Incorrect credentials. Please try again."); 
       }
     })
     .then(data=>{
@@ -74,19 +78,6 @@ const LoginPageAdmin = () => {
         <TouchableOpacity style = {styles.loginBtn} onPress = {handleSubmit(onSubmit)}>
             <Text style = {styles.loginText}> Login </Text>
         </TouchableOpacity>
-{/* 
-        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Admin Page')}>
-            <Text style = {styles.loginText}> Admin Screen </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Author Page')}>
-            <Text style = {styles.loginText}> Author Screen </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Reviewer Page')}>
-            <Text style = {styles.loginText}> Reviewer Screen </Text>
-        </TouchableOpacity>
-  */}
     </View>
   );
 };

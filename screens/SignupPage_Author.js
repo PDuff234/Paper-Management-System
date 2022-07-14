@@ -21,6 +21,7 @@ const SignupPageAuthor = () => {
       console.log("response: " + response);
       if (response.status === 200) {
         console.log("Response is 200")
+        alert("User successfully created"); 
         navigation.navigate('Author Login');
         return response.json(); 
       }

@@ -32,7 +32,7 @@ const AuthorPage = () => {
       }
 
       console.log(JSON.stringify(payload)); 
-      await fetch("http://localhost:5000/papers", {
+      await fetch("http://localhost:5000/papers/add", {
         method: 'POST', 
         headers: { 
           Accept: "application/json", 
@@ -48,6 +48,68 @@ const AuthorPage = () => {
           return res.json(); 
         }
       })
+  }; 
+
+  const updateDocument = async () => {
+    let result = await DocumentPicker.getDocumentAsync({}); 
+
+    var payload = {
+      author: sessionStorage.getItem("user"), 
+      title: result.name, 
+      uri: result.uri  
+    }
+
+    if (window.confirm("Submit this file?"))
+    {
+      console.log(JSON.stringify(payload)); 
+      await fetch("http://localhost:5000/papers/modify", {
+        method: 'PUT', 
+        headers: { 
+          "Content-Type": "application/json" 
+        }, 
+        body: JSON.stringify(payload)
+      }) 
+      .then(res => {
+        console.log("Response: " + res);
+        if (res.status === 200)
+        {
+          alert("User has successfully modified the paper"); 
+          return res.json(); 
+        }
+        else 
+        {
+          alert("Error: You have not submitted a document to the database yet. \n Please click 'Add Paper' to submit your paper."); 
+        }
+      })
+    }
+    else 
+    {
+      console.log("Cancel button hit"); 
+    }
+  };
+
+  const deleteDocument = async () => {
+    if (window.confirm("Delete your paper?"))
+    {
+      var payload = { author: sessionStorage.getItem("user") }
+      console.log(JSON.stringify(payload)); 
+      await fetch("http://localhost:5000/papers/delete", {
+        method: 'DELETE', 
+        headers: { 
+          //Accept: 'application/json', 
+          "Content-Type": "application/json" 
+        }, 
+        body: JSON.stringify(payload)
+      }) 
+      .then(res => {
+        console.log("Response: " + res);
+        if (res.status === 200)
+        {
+          alert("User has successfully deleted the paper"); 
+          return res.json(); 
+        }
+      })
+    }
   }; 
 
   return (
@@ -67,10 +129,12 @@ const AuthorPage = () => {
         <View style = {styles.space} />
         <Button 
           title = "Modify Paper"
+          onPress={updateDocument}
         />
         <View style = {styles.space} />
         <Button
           title = "Delete Paper"
+          onPress={deleteDocument}
         />
       </View>
 

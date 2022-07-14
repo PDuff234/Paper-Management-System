@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, StyleSheet, View, Image, TextInput, ScrollView } from 'react-native';
+import { Button, StyleSheet, View, Image, TextInput, ScrollView, TouchableOpacity } from 'react-native';
 import { RadioButton, Text } from 'react-native-paper';
 
 const TestReviewer = () => {
@@ -26,7 +26,10 @@ const TestReviewer = () => {
         <Text style = {{ color: '#CFC493', fontSize: 32,  fontFamily: 'Garamond'}}>
           Please complete scoring for the following paper below
         </Text>
-        <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 200, marginBottom: 10, fontFamily: 'Garamond'}}>
+        <TouchableOpacity style = {styles.loginBtn}>
+            <Text style = {styles.loginText}> Paper 1 </Text>
+        </TouchableOpacity>
+        <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 100, marginBottom: 10, fontFamily: 'Garamond'}}>
           Appropriateness of Topic 
         </Text> 
         <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value}>
@@ -731,6 +734,21 @@ const styles = StyleSheet.create({
     flexDirection: "row", 
     justifyContent: "space-around", 
     backgroundColor: 'green', 
+  }, 
+
+  loginBtn: {
+    width: "20%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#CFC493",
+  },
+
+  loginText: {
+      color: "white", 
+      fontSize: 16
   }, 
 });
 export default TestReviewer;

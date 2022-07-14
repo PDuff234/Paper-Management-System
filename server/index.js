@@ -124,18 +124,51 @@ app.post("/login/reviewers", async(req, res) => {
 
 
 //Adding a paper to the database
-app.post("/papers", async(req, res) => {
+app.post("/papers/add", async(req, res) => {
     try {
         const { author, title, uri } = req.body; 
         const newPaper = await pool.query(
             "INSERT INTO Papers (author, title, uri) VALUES ($1, $2, $3)", 
             [author, title, uri]
         ); 
+        console.log(newPaper); 
         res.json(newPaper); 
     } catch (err) {
         console.error(err.message); 
     }
 }); 
+
+//Modifying a paper in the database
+app.put("/papers/modify", async(req, res) => {
+    try {
+        const { author, title, uri } = req.body; 
+        const newPaper = await pool.query(
+            "UPDATE Papers SET title = $2, uri = $3 WHERE author = $1", 
+            [author, title, uri]
+        ); 
+        console.log(newPaper); 
+        res.json(newPaper); 
+    } catch (err) {
+        console.error(err.message); 
+    }
+}); 
+
+//Modifying a paper in the database
+app.delete("/papers/delete", async(req, res) => {
+    try {
+        const { author } = req.body; 
+        const newPaper = await pool.query(
+            "DELETE FROM Papers WHERE author = $1", 
+            [author]
+        ); 
+        console.log(newPaper); 
+        res.json(newPaper); 
+    } catch (err) {
+        console.error(err.message); 
+    }
+}); 
+
+
 
 //Open Listener on Port 5000
 app.listen(5000, () => {

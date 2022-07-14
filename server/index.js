@@ -122,6 +122,21 @@ app.post("/login/reviewers", async(req, res) => {
     }
 });
 
+
+//Adding a paper to the database
+app.post("/papers", async(req, res) => {
+    try {
+        const { author, title, uri } = req.body; 
+        const newPaper = await pool.query(
+            "INSERT INTO Papers (author, title, uri) VALUES ($1, $2, $3)", 
+            [author, title, uri]
+        ); 
+        res.json(newPaper); 
+    } catch (err) {
+        console.error(err.message); 
+    }
+}); 
+
 //Open Listener on Port 5000
 app.listen(5000, () => {
     console.log("Server has started on port 5000");

@@ -35,7 +35,8 @@ const SignupPageAdmin = () => {
     .then(response => {
       console.log("response: " + response);
       if (response.status === 200) {
-        console.log("Response is 200")
+        console.log("Response is 200"); 
+        alert("User successfully created"); 
         navigation.navigate('Admin Login');
         return response.json(); 
       }

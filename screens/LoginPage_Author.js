@@ -22,8 +22,12 @@ const LoginPageAuthor = () => {
     .then(response => {
       console.log("Response: " + response);
       if (response.status === 200) {
-        console.log("Response is 200")
+        console.log("Response is 200"); 
+        alert("User has successfully logged in"); 
         return response.json(); 
+      }
+      else {
+        alert("Incorrect credentials. Please try again."); 
       }
     })
     .then(data=>{

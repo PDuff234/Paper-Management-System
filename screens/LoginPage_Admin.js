@@ -74,11 +74,11 @@ const LoginPageAdmin = () => {
           />
         </View>
 
-
+{/*
         <TouchableOpacity>
           <Text style = {styles.forgot_button} onPress = {() => navigation.navigate('Admin Sign Up')}> Not a user? Register Here! </Text>
         </TouchableOpacity>
-
+  */}
         <TouchableOpacity style = {styles.loginBtn} onPress = {handleSubmit(onSubmit)}>
             <Text style = {styles.loginText}> Login </Text>
         </TouchableOpacity>

@@ -1,0 +1,10 @@
+Things that I need to add later
+Validation messages for paper submission
+Checks in the database so that a Reviewer cant be assigned more than 3 papers
+Something in the Author Page that shows if that author has submitted a paper or not already
+Have it to where each author can only submit one paper to the database (Probably another database check)
+Link the scoring to each paper
+Have the author define what genres the paper is 
+Have the reviewer define what genres he is proficient in
+Give the admin the ability to choose what papers he would like to assign to each reviewer
+Once a reviewer submits his review for a paper, make the button (i.e. Paper 1 Button) null and inaccessible for the reviewer 

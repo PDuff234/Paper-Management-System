@@ -112,6 +112,31 @@ const AuthorPage = () => {
     }
   }; 
 
+  const getDocument = async () => {
+    try {
+      var payload = {
+        reviewer: sessionStorage.getItem("user")
+      }
+  
+      console.log(JSON.stringify(payload)); 
+      const response = await fetch("http://localhost:5000/papers", {
+        method: 'POST', 
+        headers: { 
+          Accept: "application/json", 
+          "Content-Type": "application/json" 
+        }, 
+        body: JSON.stringify(payload)
+      }) 
+      let jsonData = await response.json(); 
+      
+      setPaper(jsonData); 
+  
+  
+    } catch (err) {
+      console.error(err.message); 
+    }
+  }; 
+
   return (
     <View style = { styles.container }>
       <Text style = {{ color: '#CFC493', fontSize: 32, marginTop: 20, fontFamily: 'Garamond'}}>

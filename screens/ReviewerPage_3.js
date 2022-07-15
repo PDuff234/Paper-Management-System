@@ -72,7 +72,7 @@ const downloadPaper = () => {
 
   return (
     <View style = {styles.container}>
-      <ScrollView contentContainerStyle = {{ flexGrow: 1, justifyContent: 'center', alignContent: 'center', alignItems: 'center', marginHorizontal: 40 }}>
+      <ScrollView contentContainerStyle = {{ flexGrow: 1, justifyContent: 'center', alignContent: 'center', alignItems: 'center', marginHorizontal: 613 }}>
         <Text style = {{ color: '#CFC493', fontSize: 32,  fontFamily: 'Garamond', marginBottom: 50}}>
           Please complete scoring for the following paper below
         </Text>
@@ -769,6 +769,10 @@ const downloadPaper = () => {
           </View>
         </RadioButton.Group>
         
+        <TouchableOpacity style = {styles.loginBtn}>
+            <Text style = {styles.loginText}> Submit Review </Text>
+        </TouchableOpacity>
+
       </ScrollView>
     </View>
   );

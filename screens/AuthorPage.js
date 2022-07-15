@@ -9,7 +9,7 @@ const AuthorPage = () => {
 
 
   const pickDocument = async () => {
-    let result = await DocumentPicker.getDocumentAsync({}); 
+    let result = await DocumentPicker.getDocumentAsync({ type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/pdf" }); 
     console.log(JSON.stringify(result));       
     console.log(result.uri); 
     console.log('Type: ' + result.type); 

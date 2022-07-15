@@ -168,6 +168,20 @@ app.delete("/papers/delete", async(req, res) => {
     }
 }); 
 
+//Fetching a paper in the database
+app.post("/review/paper", async(req, res) => {
+    try {
+        const { reviewer } = req.body; 
+        const revPaper = await pool.query(
+            "SELECT uri FROM papers WHERE reviewer = $1", 
+            [reviewer]
+        ); 
+        res.json(revPaper.rows); 
+    } catch (err) {
+        console.error(err.message); 
+    }
+}); 
+
 
 
 //Open Listener on Port 5000

@@ -55,3 +55,9 @@ When you are in the projects directory, run the following commands to install al
 yarn 
 yarn start
 ```
+
+# Setting up the Database
+
+Sweet! If you followed everything up to this point, you should be able to run the app itself but none of the APIs. Here is how you set everything up to have a fully functional program
+
+

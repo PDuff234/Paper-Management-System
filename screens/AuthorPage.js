@@ -119,7 +119,9 @@ const AuthorPage = () => {
       </Text>
 
       <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 100, marginBottom: 80, fontFamily: 'Garamond'}}>
-        Please choose the paper you would like to submit to The Consortium for Computing Sciences in Colleges Midwest Region (CCSCMW) using one of the options below
+        Please choose the paper you would like to submit using one of the options below. 
+        <br/>
+        Once you add a paper, you have to click the Submit Paper Button to send it to the database.
       </Text>
       <View style = {styles.fixToText}>
         <Button

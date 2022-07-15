@@ -10,7 +10,8 @@ const LoginPageAdmin = () => {
 
   const onSubmit = useCallback(formData => {
     console.log("Data sent: " + formData);
-    
+    let flag = 0; 
+
     fetch('http://localhost:5000/login/admin', {
       method: 'POST', 
       headers: {
@@ -20,10 +21,10 @@ const LoginPageAdmin = () => {
       body: JSON.stringify(formData)
     })
     .then(response => {
-      console.log("Response: " + response);
       if (response.status === 200) {
         console.log("Response is 200"); 
         alert("User has successfully logged in"); 
+        flag = 1; 
         return response.json(); 
       }
       if (response.status !== 200) {
@@ -32,7 +33,10 @@ const LoginPageAdmin = () => {
     })
     .then(data=>{
       sessionStorage.setItem("user", data);
-      navigation.navigate('Admin Page');
+      if (flag === 1)
+      {
+        navigation.navigate('Admin Page');
+      }
     })
   });
 

@@ -1,10 +1,10 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import { Button, StyleSheet, View, Image, TextInput, ScrollView, TouchableOpacity, Linking, SliderComponent } from 'react-native';
 import { RadioButton, Text } from 'react-native-paper';
 import { useNavigation } from "@react-navigation/native";
 
 
-const TestReviewer = () => {
+const PaperReview1 = () => {
   const [value, setValue] = React.useState('');
   const [tempvalue, settempValue] = React.useState(''); 
   const [supvalue, setsupValue] = React.useState(''); 
@@ -43,14 +43,6 @@ const getPaper = async () => {
     let jsonData = await response.json(); 
     
     setPaper(jsonData); 
-    const temparray = paper.map(function(papers) {
-      console.log(papers.uri); 
-      return papers.uri; 
-    }); 
-    console.log(temparray[0]); 
-
-    //Open the url from the data sent
-    Linking.openURL(temparray[0]); 
 
 
   } catch (err) {
@@ -58,37 +50,38 @@ const getPaper = async () => {
   }
 }; 
 
+const downloadPaper = () => {
+  try {
+    const temparray = paper.map(function(papers) {
+      console.log(papers.uri); 
+      return papers.uri; 
+    }); 
+
+    console.log(temparray[0]); 
+    //Open the url from the data sent
+    Linking.openURL(temparray[0]); 
+
+  } catch (err) {
+    console.error(err.message); 
+  }
+}; 
+
+//Automatically call function at page load
+useEffect(() => {
+  getPaper(); 
+}, [])
+
   return (
     <View style = {styles.container}>
       <ScrollView contentContainerStyle = {{ flexGrow: 1, justifyContent: 'center', alignContent: 'center', alignItems: 'center', marginHorizontal: 40 }}>
-        <Text style = {{ color: '#CFC493', fontSize: 32,  fontFamily: 'Garamond'}}>
+        <Text style = {{ color: '#CFC493', fontSize: 32,  fontFamily: 'Garamond', marginBottom: 50}}>
           Please complete scoring for the following paper below
         </Text>
 
-        <Button
-          title="Download Paper"
-          onPress={getPaper}
-        />
+        <TouchableOpacity style = {styles.loginBtn} onPress = {downloadPaper}>
+              <Text style = {styles.loginText}> Download Paper </Text>
+        </TouchableOpacity>
 
-{/*
-        <Fragment>
-          {" "}
-          <table className="table mt-5 text-center">
-            <thead>
-              <tr>
-                <th>Paper URI</th>
-              </tr>
-            </thead>
-            <tbody>
-              {paper.map(papers => (
-                <tr key={papers.uri}>
-                  <td>{papers.uri}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Fragment>
-*/}
         <Text style = {{ color: '#CFC493', fontSize: 20, marginTop: 100, marginBottom: 10, fontFamily: 'Garamond'}}>
           Appropriateness of Topic 
         </Text> 
@@ -811,4 +804,4 @@ const styles = StyleSheet.create({
       fontSize: 16
   }, 
 });
-export default TestReviewer;
+export default PaperReview1;

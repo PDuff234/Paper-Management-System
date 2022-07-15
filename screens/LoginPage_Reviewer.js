@@ -10,7 +10,8 @@ const LoginPageReviewer = () => {
 
   const onSubmit = useCallback(formData => {
     console.log("Data sent: " + formData);
-    
+    let flag = 0; 
+
     fetch('http://localhost:5000/login/reviewers', {
       method: 'POST', 
       headers: {
@@ -20,10 +21,10 @@ const LoginPageReviewer = () => {
       body: JSON.stringify(formData)
     })
     .then(response => {
-      console.log("Response: " + response);
       if (response.status === 200) {
         console.log("Response is 200"); 
         alert("User has successfully logged in"); 
+        flag = 1; 
         return response.json(); 
       }
       else {
@@ -32,7 +33,10 @@ const LoginPageReviewer = () => {
     })
     .then(data=>{
       sessionStorage.setItem("user", data);
-      navigation.navigate('Reviewer Page');
+      if (flag === 1)
+      {
+        navigation.navigate('Reviewer Page');
+      }
     })
   });
 

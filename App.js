@@ -7,13 +7,16 @@ import { Button, StyleSheet, Text, View, Image, TextInput } from 'react-native';
 
 import AdminPage from './screens/AdminPage';
 import AuthorPage from './screens/AuthorPage';
-import ReviewerPage from './screens/ReviewerPage';
 import LoginPageAdmin from './screens/LoginPage_Admin';
 import LoginPageReviewer from './screens/LoginPage_Reviewer';
 import LoginPageAuthor from './screens/LoginPage_Author';
 import SignupPageAuthor from './screens/SignupPage_Author';
 import SignupPageReviewer from './screens/SignupPage_Reviewer';
 import SignupPageAdmin from './screens/SignupPage_Admin'; 
+import PreReview from './screens/PreReviewerPage';
+import PaperReview1 from './screens/ReviewerPage_1';
+import PaperReview2 from './screens/ReviewerPage_2';
+import PaperReview3 from './screens/ReviewerPage_3';
 
 
 function HomeScreen({ navigation }) {
@@ -90,7 +93,31 @@ function AuthPage() {
 function RevPage() {
   return (
     <View style = {styles.container}>
-      <ReviewerPage />
+      <PreReview />
+    </View>
+  ); 
+}
+
+function PaperRevPage1() {
+  return (
+    <View style = {styles.container}>
+      <PaperReview1 />
+    </View>
+  ); 
+}
+
+function PaperRevPage2() {
+  return (
+    <View style = {styles.container}>
+      <PaperReview2 />
+    </View>
+  ); 
+}
+
+function PaperRevPage3() {
+  return (
+    <View style = {styles.container}>
+      <PaperReview3 />
     </View>
   ); 
 }
@@ -132,6 +159,9 @@ function App() {
         <Stack.Screen name="Admin Page" component={AdmPage} />
         <Stack.Screen name="Author Page" component={AuthPage} />
         <Stack.Screen name="Reviewer Page" component={RevPage} />
+        <Stack.Screen name="Paper Review 1" component={PaperRevPage1} />
+        <Stack.Screen name="Paper Review 2" component={PaperRevPage2} />
+        <Stack.Screen name="Paper Review 3" component={PaperRevPage3} />
         <Stack.Screen name="Admin Sign Up" component={SupPage_Adm} />
         <Stack.Screen name="Author Sign Up" component={SupPage_Auth} />
         <Stack.Screen name="Reviewer Sign Up" component={SupPage_Rev} />

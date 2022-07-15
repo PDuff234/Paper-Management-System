@@ -40,6 +40,9 @@ const SignupPageAdmin = () => {
         navigation.navigate('Admin Login');
         return response.json(); 
       }
+      else {
+        alert("User did not Successfully Register")
+      }
     })
     
   }, []);

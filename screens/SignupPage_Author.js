@@ -25,6 +25,9 @@ const SignupPageAuthor = () => {
         navigation.navigate('Author Login');
         return response.json(); 
       }
+      else {
+        alert("User did not Successfully Register"); 
+      }
     })
     
   }, []);

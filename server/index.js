@@ -23,6 +23,7 @@ app.post("/register/admin", async(req, res) => {
         res.json(newUser);
     } catch (err) {
         console.error(err.message);
+        res.status(400).send();
     }
 });
 
@@ -36,8 +37,10 @@ app.post("/register/authors", async(req, res) => {
         );
         
         res.json(newUser);
+
     } catch (err) {
         console.error(err.message);
+        res.status(400).send(); 
     }
 });
 
@@ -53,6 +56,7 @@ app.post("/register/reviewers", async(req, res) => {
         res.json(newUser);
     } catch (err) {
         console.error(err.message);
+        res.status(400).send(); 
     }
 });
 
@@ -69,12 +73,11 @@ app.post("/login/admin", async(req, res) => {
             console.log(verifyLogin.rows[0].adminid)
             res.status(200).send(JSON.stringify(verifyLogin.rows[0].adminid));
         } 
-        else{
-            console.log("Admin didn't log in");
-            res.status(400).send("Invalid credentials");
-        }
+
     } catch (err) {
         console.error(err.message);
+        console.log("Admin didn't log in");
+        res.status(400).send("Invalid credentials");
     }
 });
 
@@ -91,12 +94,10 @@ app.post("/login/authors", async(req, res) => {
             console.log(verifyLogin.rows[0].authorid)
             res.status(200).send(JSON.stringify(verifyLogin.rows[0].authorid));
         } 
-        else{
-            console.log("Author didn't log in");
-            res.status(400).send("Invalid credentials");
-        }
     } catch (err) {
         console.error(err.message);
+        console.log("Author didn't log in");
+        res.status(400).send("Invalid credentials");
     }
 });
 
@@ -113,12 +114,11 @@ app.post("/login/reviewers", async(req, res) => {
             console.log(verifyLogin.rows[0].reviewerid)
             res.status(200).send(JSON.stringify(verifyLogin.rows[0].reviewerid));
         } 
-        else{
-            console.log("Reviewer didn't log in");
-            res.status(400).send("Invalid credentials");
-        }
+        
     } catch (err) {
         console.error(err.message);
+        console.log("Reviewer didn't log in");
+        res.status(400).send("Invalid credentials");
     }
 });
 

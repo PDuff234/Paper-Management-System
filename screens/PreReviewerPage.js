@@ -13,15 +13,19 @@ const PreReview = () => {
       </Text>
 
       <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Author Page')}>
+        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Paper Review 1')}>
             <Text style = {styles.loginText}> Paper 1 </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Reviewer Page')}>
+        <View style = {styles.space} />
+
+        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Paper Review 2')}>
             <Text style = {styles.loginText}> Paper 2 </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Reviewer Page')}>
+        <View style = {styles.space} />
+
+        <TouchableOpacity style = {styles.loginBtn} onPress = {() => navigation.navigate('Paper Review 3')}>
             <Text style = {styles.loginText}> Paper 3 </Text>
         </TouchableOpacity>
       </View>
@@ -64,7 +68,7 @@ const styles = StyleSheet.create({
   },
  
   loginBtn: {
-    width: "80%",
+    width: "40%",
     borderRadius: 25,
     height: 50,
     alignItems: "center",
@@ -76,7 +80,11 @@ const styles = StyleSheet.create({
   loginText: {
       color: "white", 
       fontSize: 16
-  }
+  }, 
+
+  space: {
+    width: 40, 
+  }, 
 });
 
 export default PreReview;

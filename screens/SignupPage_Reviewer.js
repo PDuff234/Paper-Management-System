@@ -25,6 +25,9 @@ const SignupPageReviewer = () => {
         navigation.navigate('Reviewer Login');
         return response.json(); 
       }
+      else {
+        alert("User did not Successfully Register")
+      }
     })
     
   }, []);

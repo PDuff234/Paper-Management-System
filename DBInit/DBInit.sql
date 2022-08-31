@@ -6,14 +6,14 @@ CREATE TABLE Admin(AdminID SERIAL PRIMARY KEY, Fname VARCHAR(30) NOT NULL, Lname
 
 --Create Author Table
 CREATE TABLE Authors(AuthorID SERIAL PRIMARY KEY, Fname VARCHAR(30) NOT NULL, MidInit CHAR NOT NULL, Lname VARCHAR(30) NOT NULL, Affiliation VARCHAR(20) NOT NULL, Department VARCHAR(30) NOT NULL, 
-PhoneNumber INTEGER(10) NOT NULL, Email VARCHAR(50) NOT NULL, Username VARCHAR(20) NOT NULL, Password VARCHAR(20) NOT NULL); 
+PhoneNumber INTEGER NOT NULL, Email VARCHAR(50) NOT NULL, Username VARCHAR(20) NOT NULL, Password VARCHAR(20) NOT NULL); 
 
 --Create Genre Table
 CREATE TABLE Genres(GenreID SERIAL PRIMARY KEY, GenreDescription VARCHAR(50)); 
 
 --Create Reviewer Table
 CREATE TABLE Reviewers(ReviewerID SERIAL PRIMARY KEY, Fname VARCHAR(30) NOT NULL, MidInit CHAR NOT NULL, Lname VARCHAR(30) NOT NULL, Affiliation VARCHAR(20) NOT NULL, Department VARCHAR(30) NOT NULL, 
-PhoneNumber INTEGER(10) NOT NULL, Email VARCHAR(50) NOT NULL, Username VARCHAR(20) NOT NULL, Password VARCHAR(20) NOT NULL, Genre SERIAL REFERENCES Genres); 
+PhoneNumber INTEGER NOT NULL, Email VARCHAR(50) NOT NULL, Username VARCHAR(20) NOT NULL, Password VARCHAR(20) NOT NULL, Genre SERIAL REFERENCES Genres); 
 
 --Create Paper Table (NOTE: Later implement a check to where Reviewer.count can only have the same reviewer 3 times for all of papers)
 --CREATE TABLE Papers(PaperID SERIAL PRIMARY KEY, Author INTEGER REFERENCES Authors, Genre INTEGER REFERENCES Genres, Title VARCHAR(100), URI VARCHAR(2000) NOT NULL); 
